@@ -1,10 +1,11 @@
 ﻿using NoobCoder;
 
-var A = new Matrix();
+// (5*A + 2*B)*A
+Matrix A = new();
 A.Read();
-
-var B = new Matrix();
+Matrix B = new();
 B.Read();
-
-var M = Matrix.Multiplication(A, B);
-M.Write();
+var A5 = Matrix.Multiply(A, 5);
+var B2 = Matrix.Multiply(B, 2);
+var AB = Matrix.Sum(A5, B2);
+Matrix.Multiplication(AB, A).Write();

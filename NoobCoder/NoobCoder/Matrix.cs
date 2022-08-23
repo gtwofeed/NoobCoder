@@ -54,25 +54,35 @@ namespace NoobCoder
                 Console.WriteLine();
             }
         }
-        internal void Multiply(double n)
+        internal static Matrix Multiply(Matrix A, double n)
         {
-            for (int i = 0; i < N; i++)
+            Matrix M = new Matrix();
+            M.N = A.N;
+            M.M = A.M;
+            M.Data = new double[M.N, M.M];
+            for (int i = 0; i < M.N; i++)
             {
-                for (int j = 0; j < M; j++)
+                for (int j = 0; j < M.M; j++)
                 {
-                    Data[i, j] *= n;
+                    M.Data[i, j] = A.Data[i, j] * n;
                 }
             }
+            return M;
         }
-        internal void Sum(Matrix A)
+        internal static Matrix Sum(Matrix A, Matrix B)
         {
-            for (int i = 0; i < N; i++)
+            Matrix M = new Matrix();
+            M.N = A.N;
+            M.M = A.M;
+            M.Data = new double[M.N, M.M];
+            for (int i = 0; i < M.N; i++)
             {
-                for (int j = 0; j < M; j++)
+                for (int j = 0; j < M.M; j++)
                 {
-                    Data[i, j] += A.Data[i, j];
+                    M.Data[i, j] = A.Data[i, j] + B.Data[i, j];
                 }
             }
+            return M;
         }
         internal static Matrix Multiplication(Matrix A, Matrix B)
         {
