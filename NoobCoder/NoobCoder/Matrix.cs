@@ -28,13 +28,13 @@ namespace NoobCoder
         }
         internal void Read()
         {
-            int[] input = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
-            N = input[0];
-            M = input[1];
+            int[] intInput = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
+            N = intInput[0];
+            M = intInput[1];
             Data = new double[N, M];
             for (int i = 0; i < N; i++)
             {
-                input = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
+                double[] input = Array.ConvertAll(Console.ReadLine().Split(' '), double.Parse);
                 for (int j = 0; j < M; j++)
                 {
                     Data[i, j] = input[j];
@@ -66,7 +66,31 @@ namespace NoobCoder
         }
         internal void Sum(Matrix A)
         {
-
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < M; j++)
+                {
+                    Data[i, j] += A.Data[i, j];
+                }
+            }
+        }
+        internal static Matrix Multiplication(Matrix A, Matrix B)
+        {
+            Matrix M = new Matrix();
+            M.N = A.N;
+            M.M = B.M;
+            M.Data = new double[M.N, M.M];
+            for (int x = 0; x < A.N; x++)
+            {
+                for (int y = 0; y < B.M; y++)
+                {
+                    for (int z = 0; z < A.M; z++)
+                    {
+                        M.Data[x, y] += A.Data[x, z] * B.Data[z, y];
+                    }
+                }
+            }
+            return M;
         }
     }
 }

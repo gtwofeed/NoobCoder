@@ -6,5 +6,5 @@ A.Read();
 var B = new Matrix();
 B.Read();
 
-A.Sum(B);
-A.Write();
+var M = Matrix.Multiplication(A, B);
+M.Write();
