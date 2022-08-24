@@ -102,5 +102,20 @@ namespace NoobCoder
             }
             return M;
         }
+        internal static Matrix Transporn(Matrix A)
+        {
+            Matrix M = new Matrix();
+            M.N = A.M;
+            M.M = A.N;
+            M.Data = new double[M.N, M.M];
+            for (int i = 0; i < M.N; i++)
+            {
+                for (int j = 0; j < M.M; j++)
+                {
+                    M.Data[i, j] = A.Data[j, i];
+                }
+            }
+            return M;
+        }
     }
 }
